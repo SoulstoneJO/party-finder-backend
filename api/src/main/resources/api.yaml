@@ -1,0 +1,110 @@
+openapi: 3.0.0
+info:
+  title: Party Finder API
+  description: party finder Api document.
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080
+    description: server
+tags:
+  - name: party finder
+paths:
+  /signUp:
+    post:
+      description: sign up API.
+      operationId: sign-up
+      tags:
+        - party finder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignUpRequest"
+      responses:
+        '200':
+          description: sign up response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SignUpResponse"
+  /signIn:
+    post:
+      description: sign in API.
+      operationId: sign-in
+      tags:
+        - party finder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignInRequest"
+      responses:
+        '200':
+          description: sign up response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SignInResponse"
+  /consumer_profile:
+    post:
+      description: consumer profile API.
+      operationId: consumer-profile
+      tags:
+        - party finder
+      parameters:
+        - in: header
+          name: token
+          schema:
+            type: string
+      responses:
+        '200':
+          description: sign up response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConsumerProfileResponse"
+components:
+  schemas:
+    SignUpRequest:
+      type: object
+      description: sign up request
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        mail:
+          type: string
+        password:
+          type: string
+    SignUpResponse:
+      type: object
+      description: sign up response
+      properties:
+        token:
+          type: string
+    SignInRequest:
+      type: object
+      description: sign in request
+      properties:
+        mail:
+          type: string
+        password:
+          type: string
+    SignInResponse:
+      type: object
+      description: sign in request
+      properties:
+        token:
+          type: string
+    ConsumerProfileResponse:
+      type: object
+      description: consumer profile response
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        mail:
+          type: string
+

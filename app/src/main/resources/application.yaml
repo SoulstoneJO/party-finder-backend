@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/party_finder
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  # xml文件位置
+  mapper-locations: classpath:**/mapper/*/*.xml
+  # log配置
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+jwt:
+  header: "Authorization"
+  token-prefix: "Bearer "
+  secret: "T Y T C C"
+  expireTime: 604800000 # one week
