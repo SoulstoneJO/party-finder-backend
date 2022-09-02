@@ -2,6 +2,8 @@ package top.controller;
 
 import generated.api.PartyFinderApi;
 import generated.model.ConsumerProfileResponse;
+import generated.model.SendMailValidationRequest;
+import generated.model.SendMailValidationResponse;
 import generated.model.SignInRequest;
 import generated.model.SignInResponse;
 import generated.model.SignUpRequest;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import top.service.ConsumerProfileService;
+import top.service.SendMailValidationService;
 import top.service.SignInService;
 import top.service.SignUpService;
 
@@ -20,6 +23,7 @@ public class PartyFinderController implements PartyFinderApi {
   @Autowired SignUpService signUpService;
   @Autowired SignInService signInService;
   @Autowired ConsumerProfileService consumerProfileService;
+  @Autowired SendMailValidationService sendMailValidationService;
 
   @Override
   public ResponseEntity<SignUpResponse> signUp(@Valid SignUpRequest signUpRequest) {
@@ -35,4 +39,12 @@ public class PartyFinderController implements PartyFinderApi {
   public ResponseEntity<ConsumerProfileResponse> consumerProfile(String token) {
     return ResponseEntity.ok(consumerProfileService.queryProfile(token));
   }
+
+  @Override
+  public ResponseEntity<SendMailValidationResponse> sendMailValidation(
+      @Valid SendMailValidationRequest sendMailValidationRequest) {
+    return ResponseEntity.ok(
+        sendMailValidationService.doSendMailValidation(sendMailValidationRequest));
+  }
+
 }

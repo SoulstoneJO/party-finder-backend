@@ -63,6 +63,24 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ConsumerProfileResponse"
+  /send_mail_validation:
+    post:
+      description: send mail validation API.
+      operationId: send-mail-validation
+      tags:
+        - party finder
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SendMailValidationRequest"
+      responses:
+        '200':
+          description: sign up response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SendMailValidationResponse"
 components:
   schemas:
     SignUpRequest:
@@ -77,10 +95,14 @@ components:
           type: string
         password:
           type: string
+        verificationCode:
+          type: string
     SignUpResponse:
       type: object
       description: sign up response
       properties:
+        resultCode:
+          type: string
         token:
           type: string
     SignInRequest:
@@ -95,11 +117,25 @@ components:
       type: object
       description: sign in request
       properties:
+        resultCode:
+          type: string
         token:
           type: string
     ConsumerProfileResponse:
       type: object
       description: consumer profile response
+      properties:
+        resultCode:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        mail:
+          type: string
+    SendMailValidationRequest:
+      type: object
+      description: send mail validation request
       properties:
         firstName:
           type: string
@@ -107,4 +143,9 @@ components:
           type: string
         mail:
           type: string
-
+    SendMailValidationResponse:
+      type: object
+      description: send mail validation response
+      properties:
+        resultCode:
+          type: string

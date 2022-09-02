@@ -1,0 +1,17 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>validate code</title>
+</head>
+<body>
+Dear <b th:text="${firstName}"></b> <b th:text="${lastName}"></b>
+<br/>
+click this link to confirm your mail address
+<br/>
+<br/>
+<p th:text="${code}" style="color: green; fontWeight: bolder; letter-spacing: 5px;font-size:20px;"></p>
+<br/>
+This is an automatically generated email so please do not reply.
+</body>
+</html>

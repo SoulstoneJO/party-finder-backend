@@ -1,7 +1,7 @@
 version: '3'
 services:
   mysql:
-    container_name: database
+    container_name: persistence
     # image: mysql:8.0 # linux/amd64
     image: arm64v8/mysql:8.0 # arm64 for apple silicon
     environment:
@@ -11,3 +11,8 @@ services:
       - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf # extra settings
     ports:
       - 3306:3306
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - 6379:6379

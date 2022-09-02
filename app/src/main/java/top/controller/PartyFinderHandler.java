@@ -14,8 +14,7 @@ public class PartyFinderHandler {
 
   @ExceptionHandler(AppException.class)
   public ResponseEntity<ResultResponse> handleAppException(AppException ex) {
-    return ResponseEntity.ok(
-        ResultResponse.builder().resultCode(ex.getCode().value).message(ex.getMessage()).build());
+    return ResponseEntity.ok(ResultResponse.builder().resultCode(ex.getCode()).build());
   }
 
   /**
